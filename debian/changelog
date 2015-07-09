@@ -1,10 +1,14 @@
 schroot (1.7.3-1) UNRELEASED; urgency=medium
 
+  [ Roger Leigh ]
   * New upstream development release.
   * debian/rules:
     - Set distributor=Debian when running cmake. 
   * CHROOT_SESSION_SOURCE added to allow setup scripts to determine
     if they are running in a source chroot session (Closes: #718127).
+
+  [ Gabriele Giacone ]
+  * Add hurd-i386 support.
 
  -- Roger Leigh <rleigh@debian.org>  Sun, 05 Jan 2014 22:57:14 +0000
 
