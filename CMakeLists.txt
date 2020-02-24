@@ -27,7 +27,7 @@ set(GIT_VERSION_FILE "cmake/GitVersion.cmake"
     CACHE FILEPATH "Location of version metadata")
 set(GIT_RELEASE_POLICY_FILE "${PROJECT_SOURCE_DIR}/cmake/GitReleasePolicy.cmake"
     CACHE FILEPATH "Location of release policy configuration")
-include("${PROJECT_SOURCE_DIR}/cmake/GitRelease.cmake")
+#include("${PROJECT_SOURCE_DIR}/cmake/GitRelease.cmake")
 
 set(VERSION ${GIT_RELEASE_VERSION})
 set(RELEASE_DATE ${GIT_RELEASE_DATE_UNIX})
