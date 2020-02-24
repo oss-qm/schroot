@@ -16,6 +16,8 @@
 #
 #####################################################################
 
+if (BUILD_TESTS)
+
 include_directories(${GTEST_INCLUDE_DIR}
                     ${PROJECT_SOURCE_DIR}/bin)
 
@@ -67,29 +69,23 @@ set(schroot_chroot_chroot_sources
     ${schroot_chroot_loopback_sources}
     schroot/chroot/facet/userdata.cc)
 
-if (BUILD_TESTS)
-  add_test(NAME setup-test-data
-           WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
-           COMMAND ${CMAKE_CURRENT_BINARY_DIR}/setup-test-data)
-endif (BUILD_TESTS)
+add_test(NAME setup-test-data
+         WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+         COMMAND ${CMAKE_CURRENT_BINARY_DIR}/setup-test-data)
 
-if (BUILD_TESTS)
-  add_executable(schroot/chroot/chroot ${schroot_chroot_chroot_sources})
-  target_link_libraries(schroot/chroot/chroot
-                        libschroot
-                        testmain
-                        ${REGEX_LIBRARY})
-  add_test(schroot/chroot/chroot schroot/chroot/chroot)
-endif (BUILD_TESTS)
+add_executable(schroot/chroot/chroot ${schroot_chroot_chroot_sources})
+target_link_libraries(schroot/chroot/chroot
+                      libschroot
+                      testmain
+                      ${REGEX_LIBRARY})
+add_test(schroot/chroot/chroot schroot/chroot/chroot)
 
 set(schroot_chroot_config_sources
     schroot/chroot/config.cc)
 
-if (BUILD_TESTS)
-  add_executable(schroot/chroot/config ${schroot_chroot_config_sources})
-  target_link_libraries(schroot/chroot/config libschroot testmain)
-  add_test(schroot/chroot/config schroot/chroot/config)
-endif (BUILD_TESTS)
+add_executable(schroot/chroot/config ${schroot_chroot_config_sources})
+target_link_libraries(schroot/chroot/config libschroot testmain)
+add_test(schroot/chroot/config schroot/chroot/config)
 
 set(schroot_standard_sources
     schroot/environment.cc
@@ -100,58 +96,48 @@ set(schroot_standard_sources
     schroot/regex.cc
     schroot/util.cc)
 
-if (BUILD_TESTS)
-  add_executable(schroot/standard ${schroot_standard_sources})
-  target_link_libraries(schroot/standard
-                        libschroot
-                        ${REGEX_LIBRARY}
-                        testmain)
-  add_test(schroot/standard schroot/standard)
-endif (BUILD_TESTS)
+add_executable(schroot/standard ${schroot_standard_sources})
+target_link_libraries(schroot/standard
+                      libschroot
+                      ${REGEX_LIBRARY}
+                      testmain)
+add_test(schroot/standard schroot/standard)
 
 set(schroot_keyfile_sources
     schroot/keyfile.cc)
 
-if (BUILD_TESTS)
-  add_executable(schroot/keyfile ${schroot_keyfile_sources})
-  target_link_libraries(schroot/keyfile libschroot testmain)
-  add_test(schroot/keyfile schroot/keyfile)
-endif (BUILD_TESTS)
+add_executable(schroot/keyfile ${schroot_keyfile_sources})
+target_link_libraries(schroot/keyfile libschroot testmain)
+add_test(schroot/keyfile schroot/keyfile)
 
 set(schroot_lock_sources
     schroot/lock.cc)
 
-if (BUILD_TESTS)
-  add_executable(schroot/lock ${schroot_lock_sources})
-  target_link_libraries(schroot/lock libschroot testmain)
-  # lock is excluded, because it is timing dependent and can fail
-  # randomly on slow or heavily-loaded systems.
-endif (BUILD_TESTS)
+add_executable(schroot/lock ${schroot_lock_sources})
+target_link_libraries(schroot/lock libschroot testmain)
+# lock is excluded, because it is timing dependent and can fail
+# randomly on slow or heavily-loaded systems.
 
 set(schroot_run_parts_sources
     schroot/run-parts.cc)
 
-if (BUILD_TESTS)
-  add_executable(schroot/run-parts ${schroot_run_parts_sources})
-  target_link_libraries(schroot/run-parts
-                        libschroot
-                        ${Boost_FILESYSTEM_LIBRARY_RELEASE}
-                        ${Boost_SYSTEM_LIBRARY_RELEASE}
-                        testmain)
-  add_test(schroot/run-parts schroot/run-parts)
-endif (BUILD_TESTS)
+add_executable(schroot/run-parts ${schroot_run_parts_sources})
+target_link_libraries(schroot/run-parts
+                      libschroot
+                      ${Boost_FILESYSTEM_LIBRARY_RELEASE}
+                      ${Boost_SYSTEM_LIBRARY_RELEASE}
+                      testmain)
+add_test(schroot/run-parts schroot/run-parts)
 
 set(bin_common_option_action_sources
     bin-common/option-action.cc)
 
-if (BUILD_TESTS)
-  add_executable(bin-common/option-action ${bin_common_option_action_sources})
-  target_link_libraries(bin-common/option-action bin-common testmain)
-  add_test(bin-common/option-action bin-common/option-action)
-endif (BUILD_TESTS)
+add_executable(bin-common/option-action ${bin_common_option_action_sources})
+target_link_libraries(bin-common/option-action bin-common testmain)
+add_test(bin-common/option-action bin-common/option-action)
 
-if (BUILD_TESTS)
-  add_test(NAME cleanup-test-data
-           WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
-           COMMAND ${CMAKE_CURRENT_BINARY_DIR}/cleanup-test-data)
+add_test(NAME cleanup-test-data
+         WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+         COMMAND ${CMAKE_CURRENT_BINARY_DIR}/cleanup-test-data)
+
 endif (BUILD_TESTS)
