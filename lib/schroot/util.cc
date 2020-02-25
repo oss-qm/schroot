@@ -229,7 +229,7 @@ namespace schroot
         bits /= 62;
       }
 
-    id << ids << '-' << getpid();
+    id << ids << '_' << getpid();
 
     return id.str();
   }

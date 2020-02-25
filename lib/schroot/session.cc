@@ -651,7 +651,7 @@ namespace schroot
                 else
                   {
                     new_session_id =
-                      ch->get_name() + '-' + unique_identifier();
+                      ch->get_name() + '_' + unique_identifier();
                   }
 
                 // Replace clone of chroot with cloned session.
