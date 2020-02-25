@@ -16,8 +16,7 @@ Build-Depends:
  libboost-filesystem-dev,
  gettext,
  libgtest-dev,
- groff-base,
- po4a (>= 0.40)
+ groff-base
 Build-Depends-Indep:
  doxygen,
  graphviz
