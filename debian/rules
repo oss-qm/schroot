@@ -44,13 +44,13 @@ override_dh_auto_configure: debian/build/CMakeCache.txt
 debian/build/gtest/libgtest.a:
 	mkdir -p $(dir $@)
 	cd $(dir $@) ; \
-	  CXX="g++-4.8 -std=c++11" cmake /usr/src/gtest ; \
+	  CXX="g++-6 -std=c++11" cmake /usr/src/gtest ; \
 	  $(MAKE) VERBOSE=1
 
 debian/build/CMakeCache.txt: CMakeLists.txt debian/build/gtest/libgtest.a
 	mkdir -p $(dir $@)
 	cd $(dir $@) ; \
-          CXX="g++-4.8 -std=c++11" \
+          CXX="g++-6 -std=c++11" \
           GTEST_ROOT="$(CURDIR)/debian/build/gtest" \
 	  cmake -DCMAKE_INSTALL_PREFIX=/usr \
 	        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
