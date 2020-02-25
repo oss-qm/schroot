@@ -64,6 +64,10 @@ debian/build/CMakeCache.txt: CMakeLists.txt debian/build/gtest/libgtest.a
 	        -DLVCREATE_EXECUTABLE=/sbin/lvcreate \
 	        -DLVREMOVE_EXECUTABLE=/sbin/lvremove \
 	        -Ddistributor=Debian \
+	        -DGIT_RELEASE_ENABLE=OFF \
+	        -DGIT_RELEASE_VERSION="1.7.999" \
+	        -DGIT_RELEASE_DATE_UNIX="0" \
+	        -Dtest=OFF \
 	        $(CURDIR)
 	dh_testdir
 
