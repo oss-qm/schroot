@@ -126,7 +126,7 @@ ifneq (,$(shell dh_listpackages -i 2>/dev/null))
 endif
 
 override_dh_installchangelogs:
-	dh_installchangelogs ChangeLog
+	dh_installchangelogs debian/changelog
 
 override_dh_installinit:
 	dh_installinit --no-start --update-rcd-params='defaults'
